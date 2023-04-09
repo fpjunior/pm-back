@@ -1,0 +1,71 @@
+---
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: API - Personal Manager
+  description: Descrição da sua API
+basePath: "/api"
+schemes:
+- http
+host: localhost:3001
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  "/expenses":
+    get:
+      summary: Retorna uma lista de despesas
+      description: Obtém uma lista de todos as despesas registradas
+      responses:
+        '200':
+          description: Lista de despesas
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Expenses"
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: ID do usuário
+      name:
+        type: string
+        description: Nome do usuário
+      email:
+        type: string
+        description: Endereço de e-mail do usuário
+
+  Expenses:
+    type: object
+    properties:
+      category:
+        type: string
+      description:
+        type: string
+      amount:
+        type: number
+      paymentType:
+        type: string
+      wallet:
+        type: string
+      establishment:
+        type: string
+      date:
+        type: string
+      isFixed:
+        type: string
+      iconCategory:
+        type: string      
+
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+
+security:
+  - Bearer: []
+
